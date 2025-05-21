@@ -190,8 +190,5 @@ public class Principal {
         public static Connection conectar() throws SQLException {
             return DriverManager.getConnection(URL, USER, PASS);
         }
-
-        // Comentario para el github
-        // Ya lo he cambiado
     }
 }
