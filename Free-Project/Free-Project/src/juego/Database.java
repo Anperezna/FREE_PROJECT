@@ -19,9 +19,16 @@ public class Database {
             // Insertar usuario 1
             String insertUsuario = "INSERT INTO usuario (nombre, fecha) VALUES (?, NOW())";
             psInsertUsuario = con.prepareStatement(insertUsuario, Statement.RETURN_GENERATED_KEYS);
+
+            // Asignar un valor a un parámetro
             psInsertUsuario.setString(1, nombre1);
+
+            // Ejecuta la instruccion para la base de datos
             psInsertUsuario.executeUpdate();
+
+            // Recupera las claves primarias
             ResultSet generatedKeys1 = psInsertUsuario.getGeneratedKeys();
+
             int idUsuario1 = -1;
             if (generatedKeys1.next()) {
                 idUsuario1 = generatedKeys1.getInt(1);
@@ -31,8 +38,14 @@ public class Database {
 
             // Insertar usuario 2
             psInsertUsuario = con.prepareStatement(insertUsuario, Statement.RETURN_GENERATED_KEYS);
+
+            // Asignar un valor a un parámetro
             psInsertUsuario.setString(1, nombre2);
+
+            // Ejecuta la instruccion para la base de datos
             psInsertUsuario.executeUpdate();
+
+            // Recupera las claves primarias
             ResultSet generatedKeys2 = psInsertUsuario.getGeneratedKeys();
             int idUsuario2 = -1;
             if (generatedKeys2.next()) {
