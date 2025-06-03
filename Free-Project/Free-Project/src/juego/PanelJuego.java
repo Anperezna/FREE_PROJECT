@@ -14,20 +14,24 @@ public class PanelJuego extends JPanel implements ActionListener, KeyListener {
     private int ticks = 0;
     private final int PUNTOS_PARA_GANAR = 5; // Puntos maximos para ganar
 
-    private int pelotaX = ANCHO / 2;
-    private int pelotaY = ALTO / 2;
-    private int tamañoPelota = 20;
+    private int pelotaX = ANCHO / 2; // Posicion de la pelota al iniciar
+    private int pelotaY = ALTO / 2; // Posicion de la pelota al iniciar
+    private int tamanoPelota = 20; // Tamaño de la pelota
 
+    // Velocidad de la pelota
     private int velocidadX = 5;
     private int velocidadY = 5;
 
     private final int anchoPaleta = 20, altoPaleta = 100;
 
+    // Posicion de la paleta del jugador
     private int jugador1Y = ALTO / 2 - altoPaleta / 2;
     private int jugador2Y = ALTO / 2 - altoPaleta / 2;
 
+    // Velocidad paleta
     private final int velocidadPaleta = 6;
 
+    // Que jugador no se mueva
     private boolean jugador1Arriba = false, jugador1Abajo = false;
     private boolean jugador2Arriba = false, jugador2Abajo = false;
 
@@ -60,7 +64,7 @@ public class PanelJuego extends JPanel implements ActionListener, KeyListener {
             e.printStackTrace();
         }
 
-        temporizador = new Timer(10, this);
+        temporizador = new Timer(10, this); // 10 ms
         temporizador.start();
     }
 
@@ -73,7 +77,7 @@ public class PanelJuego extends JPanel implements ActionListener, KeyListener {
         }
 
         g.setColor(Color.WHITE);
-        g.fillOval(pelotaX, pelotaY, tamañoPelota, tamañoPelota);
+        g.fillOval(pelotaX, pelotaY, tamanoPelota, tamanoPelota);
 
         g.fillRect(30, jugador1Y, anchoPaleta, altoPaleta);
         g.fillRect(ANCHO - 50, jugador2Y, anchoPaleta, altoPaleta);
@@ -97,7 +101,7 @@ public class PanelJuego extends JPanel implements ActionListener, KeyListener {
         pelotaX += velocidadX;
         pelotaY += velocidadY;
 
-        if (pelotaY <= 0 || pelotaY + tamañoPelota >= ALTO) {
+        if (pelotaY <= 0 || pelotaY + tamanoPelota >= ALTO) {
             velocidadY *= -1;
         }
 
@@ -107,7 +111,7 @@ public class PanelJuego extends JPanel implements ActionListener, KeyListener {
             ticks = 0;
         }
 
-        Rectangle rectPelota = new Rectangle(pelotaX, pelotaY, tamañoPelota, tamañoPelota);
+        Rectangle rectPelota = new Rectangle(pelotaX, pelotaY, tamanoPelota, tamanoPelota);
         Rectangle rectJugador1 = new Rectangle(30, jugador1Y, anchoPaleta, altoPaleta);
         Rectangle rectJugador2 = new Rectangle(ANCHO - 50, jugador2Y, anchoPaleta, altoPaleta);
 
